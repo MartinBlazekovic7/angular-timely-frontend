@@ -1,0 +1,78 @@
+<body>
+
+  <button (click)="started ? showStopDiv() : startTimer()" class="btn btn-info">{{buttonText}}</button>
+
+  <div *ngIf="showDiv" class="stopDiv">
+    <div class="windowHeader">
+      <h4>STOP TIMER</h4>
+      <h4 (click)="showDiv=!showDiv; completeProjectForm.reset(); stopTime=null;" class="cancel">X</h4>
+    </div>
+
+    <form (submit)="stopTimer()" [formGroup]="completeProjectForm" class="stopForm">
+      <label for="name">Project Name:</label>
+      <input type="text" formControlName="name" id="name">
+      <button type="submit" class="btn btn-danger">STOP</button>
+    </form>
+
+    <button class="btn btn-warning" (click)="deleteOngoingProject()">DELETE THIS ENTRY</button>
+
+  </div>
+
+  <div *ngIf="showEditDiv" class="stopDiv">
+    <div class="windowHeader">
+      <h4>EDIT PROJECT</h4>
+      <h4 (click)="showEditDiv=!showEditDiv; editProjectForm.reset();" class="cancel">X</h4>
+    </div>
+
+    <form (submit)="editSubmit()" [formGroup]="editProjectForm" class="stopForm">
+      <label for="newName">Edit name:</label>
+      <input type="text" formControlName="name" id="newName">
+      <button type="submit" class="btn btn-warning">UPDATE</button>
+    </form>
+
+
+
+  </div>
+
+
+  <ng-container *ngIf="projects?.length > 0">
+    <div class="content">
+      <table class="table table-striped" id="project-table">
+        <thead>
+        <th>Name</th>
+        <th>Start</th>
+        <th>Stop</th>
+        <th>Duration</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of projects | paginate:{itemsPerPage: 3, currentPage:page}">
+          <td>{{p.name}}</td>
+          <td>{{p.start}}</td>
+          <td>{{p.stop}}</td>
+          <td>{{p.duration}}</td>
+          <td *ngIf="deleting"><button (click)="deleteOneProject(p.id)" class="btn btn-danger">Del</button></td>
+          <td *ngIf="editing"><button (click)="editingOneProject(p)" class="btn btn-warning">Edit</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="pagination">
+      <pagination-controls (pageChange)="page=$event"></pagination-controls>
+    </div>
+  </ng-container>
+
+
+  <div *ngIf="projects?.length > 0 && !started" class="buttons">
+    <button type="button" class="btn btn-success" (click)="exportExcel()">EXCEL</button>
+    <button type="button" class="btn btn-warning" (click)="editProjects()">{{editText}}</button>
+    <button type="button" class="btn btn-danger" (click)="deleteProjects()">{{deleteText}}</button>
+  </div>
+
+</body>
+
+
+
+
+
+
+

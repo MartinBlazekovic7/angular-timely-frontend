@@ -1,0 +1,101 @@
+body {
+  background-color: #CEE5F2;
+  height: 99vh;
+  width: 99vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-info {
+  margin-top: 50px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+
+.content{
+  width: 90%;
+  height: 50vh;
+  margin: 50px 5%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.content table {
+  margin: 10px 0;
+}
+.table-striped, th {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  width: 30%;
+  margin: 0 35%;
+}
+
+.buttons button {
+  width: 33%;
+}
+
+button:focus, button:active{
+  outline: none;
+}
+
+.stopDiv {
+  height: 60%;
+  width: 60%;
+  background-color: rgba(255,255,255,0.9);
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.windowHeader{
+  display: flex;
+  justify-content: space-between;
+  background-color: #536B78;
+  width: 100%;
+  padding: 0 20px;
+  color: white;
+  border-radius: 20px 20px 0 0;
+  user-select: none;
+}
+
+.cancel{
+  user-select: none;
+  cursor: pointer;
+}
+.cancel:hover{
+  color: #CEE5F2;
+}
+
+.stopForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.stopForm label, .stopForm input, .stopForm button {
+  margin-top: 10px;
+  width: 80%;
+}
+
+.stopForm input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #536B78;
+}
+
